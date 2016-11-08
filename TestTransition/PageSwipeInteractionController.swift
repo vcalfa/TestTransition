@@ -113,9 +113,9 @@ class PageSwipeInteractionController : UIPercentDrivenInteractiveTransition {
         
         switch direction {
         case .before:
-            return pageViewController.pageDelegate?.pageViewController(pageViewController, shouldNavigateBefore: pageViewController.currentViewController) ?? true
+            return pageViewController.pageDelegate?.pageViewController?(pageViewController, shouldNavigateBefore: pageViewController.currentViewController) ?? true
         case .after:
-            return pageViewController.pageDelegate?.pageViewController(pageViewController, shouldNavigateAfter: pageViewController.currentViewController) ?? true
+            return pageViewController.pageDelegate?.pageViewController?(pageViewController, shouldNavigateAfter: pageViewController.currentViewController) ?? true
         default:
             return false
         }

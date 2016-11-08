@@ -26,6 +26,16 @@ class PageViewController: UIViewController {
     
     func setCurrentViewController(currentViewController: UIViewController) {
         
+        
+        self.currentViewController?.willMove(toParentViewController: nil)
+        currentViewController.view.frame = view.bounds
+        addChildViewController(currentViewController)
+
+        self.currentViewController?.view.removeFromSuperview()
+        self.currentViewController?.removeFromParentViewController()
+        currentViewController.didMove(toParentViewController: self)
+        
+        self.currentViewController = currentViewController
     }
     
     func beginTransition(direction: Direction) {
@@ -53,24 +63,18 @@ class PageViewController: UIViewController {
             addChildViewController(to)
         }
         
-        let animator = animatorFor(direction: direction)
-        
-        
         let transitionContext = PrivateTransitionContext(fromViewController: fromViewController, toViewController: toViewController, container: view, direction: direction)
         
         transitionContext.completionBlock = { didComplete in
+            fromViewController?.view.removeFromSuperview()
+            fromViewController?.removeFromParentViewController()
+            toViewController?.didMove(toParentViewController: self)
             
+            self.currentViewController = toViewController
         }
-        
-//        transitionContext.completionBlock = ^(BOOL didComplete) {
-//            [fromViewController.view removeFromSuperview];
-//            [fromViewController removeFromParentViewController];
-//            [toViewController didMoveToParentViewController:self];
-//        };
-        
-        
+
+        let animator = animatorFor(direction: direction)
         animator.animateTransition(using: transitionContext)
-        
     }
     
     
@@ -95,35 +99,81 @@ class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning 
     // presentation type we will invoke the animateTransition: even though the transition should not be
     // animated. This allows the custom transition to add or remove subviews to the container view.
     
-    private(set) var isAnimated: Bool
+    private(set) var isAnimated: Bool = true
+    
+    private(set) var targetTransform: CGAffineTransform = CGAffineTransform.identity
+    
+    private(set) var isInteractive: Bool = false // This indicates whether the transition is currently interactive.
     
     
-    private(set) var isInteractive: Bool  // This indicates whether the transition is currently interactive.
+    private(set) var transitionWasCancelled: Bool = false
     
     
-    private(set) var transitionWasCancelled: Bool
+    private(set) var presentationStyle: UIModalPresentationStyle = .custom
     
+    private(set) var privateViewControllers = [UITransitionContextViewControllerKey: UIViewController?]()
     
-    private(set) var presentationStyle: UIModalPresentationStyle
+    private(set) var direction: Direction
     
-    private(set) var viewControllers = [UITransitionContextViewControllerKey: UIViewController?]()
+    var completionBlock: ((Bool) -> Void)?
     
     init(fromViewController: UIViewController?, toViewController: UIViewController?, container: UIView, direction: Direction) {
-        super.init()
         
         containerView = container
-    
-        isAnimated = true
-        isInteractive = true
-        transitionWasCancelled = false
-        presentationStyle = .custom
-    
-        viewControllers = [
+        self.direction = direction
+        
+        super.init()
+        
+        privateViewControllers = [
             UITransitionContextViewControllerKey.from: fromViewController,
             UITransitionContextViewControllerKey.to: toViewController,
         ]
+    }
     
+
+    func viewController(forKey key: UITransitionContextViewControllerKey) -> UIViewController? {
+        return privateViewControllers[key] ?? nil
+    }
+    
+    func view(forKey key: UITransitionContextViewKey) -> UIView? {
+        switch key {
+            case UITransitionContextViewKey.from:
+                return privateViewControllers[UITransitionContextViewControllerKey.from]??.view
+            case UITransitionContextViewKey.to:
+                return privateViewControllers[UITransitionContextViewControllerKey.to]??.view
+            default:
+                return nil
+        }
+    }
+    
+    func completeTransition(_ didComplete:Bool) -> Void {
+        completionBlock?(didComplete)
+    }
+    
+    
+    func initialFrame(for vc: UIViewController) -> CGRect {
+        return containerView.bounds
+    }
+    
+    func finalFrame(for vc: UIViewController) -> CGRect {
+        return containerView.bounds
+    }
+    
+    
+    func pauseInteractiveTransition() {
         
+    }
+    
+    // Supress warnings by implementing empty interaction methods for the remainder of the protocol:
+    func updateInteractiveTransition(_ percentComplete: CGFloat) {
+        
+    }
+    
+    func finishInteractiveTransition() {
+        
+    }
+    
+    func cancelInteractiveTransition() {
         
     }
 }
@@ -152,13 +202,13 @@ extension PageViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
-protocol PageViewControllerDelegate: class {
+@objc protocol PageViewControllerDelegate: class {
     
     func pageViewController(_ pageViewController: PageViewController, viewControllerBefore viewController: UIViewController?) -> UIViewController?
     
     func pageViewController(_ pageViewController: PageViewController, viewControllerAfter viewController: UIViewController?) -> UIViewController?
     
-    func pageViewController(_ pageViewController: PageViewController, shouldNavigateBefore viewController: UIViewController?) -> Bool
+    @objc optional func pageViewController(_ pageViewController: PageViewController, shouldNavigateBefore viewController: UIViewController?) -> Bool
     
-    func pageViewController(_ pageViewController: PageViewController, shouldNavigateAfter viewController: UIViewController?) -> Bool
+    @objc optional func pageViewController(_ pageViewController: PageViewController, shouldNavigateAfter viewController: UIViewController?) -> Bool
 }

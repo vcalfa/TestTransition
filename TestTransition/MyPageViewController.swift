@@ -15,6 +15,7 @@ class MyPageViewController : PageViewController {
         
         pageDelegate = self
         
+        setCurrentViewController(currentViewController: SecondViewController())
     }
 }
 
