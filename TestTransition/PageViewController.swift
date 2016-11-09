@@ -75,8 +75,8 @@ class PageViewController: UIViewController {
                 self.currentViewController = toViewController
             }
             else {
-                //toViewController?.didMove(toParentViewController: nil)
-                //toViewController?.view.removeFromSuperview()
+                toViewController?.didMove(toParentViewController: nil)
+                toViewController?.view.removeFromSuperview()
                 toViewController?.removeFromParentViewController()
                 fromViewController?.didMove(toParentViewController: self)
             }

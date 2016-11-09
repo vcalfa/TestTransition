@@ -37,7 +37,9 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
     func handleGesture(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
         
         let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview!)
-        var progress = translation.x / swipeLength
+        let velocity = gestureRecognizer.velocity(in: gestureRecognizer.view!.superview!)
+        var progress = translation.x / gestureRecognizer.view!.superview!.frame.width
+        progress = progress < 0 ? -1*progress : progress
         
         progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
         
@@ -65,8 +67,8 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
             //pageViewController.present(viewController, animated: true, completion: nil)
             
         case .changed:
-
-            shouldCompleteTransition = progress > 0.4
+            print("Velocity: \(velocity)")
+            shouldCompleteTransition = progress > 0.4 || abs(velocity.x) > 800
             update(progress)
             
         case .cancelled:
@@ -125,9 +127,9 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
 
         switch translation {
             case let t where t.x >= 0:
-                return .after
-            case let t where t.x < 0:
                 return .before
+            case let t where t.x < 0:
+                return .after
             default:
                 return .unknown
         }

@@ -19,19 +19,29 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.45
+        return 0.35
     }
     
-    private func originFrame(rect: CGRect, direction:Direction) -> CGRect {
-        
-        
-        return rect.applying(CGAffineTransform.init(translationX: rect.width*(1.0/5.0), y: 0))
+    private func originToFrame(rect: CGRect, direction:Direction) -> CGRect {
+        switch direction {
+        case .before:
+            return rect.applying(CGAffineTransform.init(translationX: -(rect.width + 4.0), y: 0))
+        case .after:
+            return rect.applying(CGAffineTransform.init(translationX: rect.width*(1.0/5.0), y: 0))
+        default:
+            return CGRect.zero
+        }
     }
     
     private func finalFromFrame(rect: CGRect, direction:Direction) -> CGRect {
-        
-        
-        return rect.applying(CGAffineTransform.init(translationX: -(rect.width + 4.0), y: 0))
+        switch direction {
+        case .before:
+            return rect.applying(CGAffineTransform.init(translationX: rect.width*(1.0/5.0), y: 0))
+        case .after:
+            return rect.applying(CGAffineTransform.init(translationX: -(rect.width + 4.0), y: 0))
+        default:
+            return CGRect.zero
+        }
     }
     
     private func setShadow(viewController:UIViewController) {
@@ -51,32 +61,32 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         let containerView = transitionContext.containerView
         
-        var finalFrame : CGRect = .zero
-        var fFromFrame : CGRect = .zero
+        var finalFrameTo : CGRect = .zero
+        var finalFrameFrom : CGRect = .zero
         
         switch animation {
         case .before:
         
-            let initialFrame = originFrame(rect: fromVC.view.frame, direction: animation)
-            toVC.view.frame = initialFrame
+
+            toVC.view.frame = originToFrame(rect: fromVC.view.frame, direction: animation)
             
-            finalFrame = transitionContext.finalFrame(for: toVC)
-            fFromFrame = finalFromFrame(rect: fromVC.view.frame, direction: animation)
+            finalFrameTo = fromVC.view.frame
+            finalFrameFrom = finalFromFrame(rect: fromVC.view.frame, direction: animation)
+            
+            setShadow(viewController: toVC)
+            containerView.insertSubview(toVC.view, aboveSubview: fromVC.view)
+
+        case .after:
+            
+
+            toVC.view.frame = originToFrame(rect: fromVC.view.frame, direction: animation)
+            
+            finalFrameTo = fromVC.view.frame
+            finalFrameFrom = finalFromFrame(rect: fromVC.view.frame, direction: animation)
             
             setShadow(viewController: fromVC)
             containerView.insertSubview(toVC.view, belowSubview: fromVC.view)
             
-        case .after:
-            
-            let initialFrame = finalFromFrame(rect: fromVC.view.frame, direction: animation)
-            toVC.view.frame = initialFrame
-            
-            finalFrame = transitionContext.finalFrame(for: toVC)
-            fFromFrame = originFrame(rect: fromVC.view.frame, direction: animation)
-            
-            setShadow(viewController: toVC)
-            containerView.insertSubview(toVC.view, aboveSubview: fromVC.view)
-            break
         case .unknown:
             break
         }
@@ -84,13 +94,19 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         let duration = transitionDuration(using: transitionContext)
         
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-            fromVC.view.frame = fFromFrame
-            toVC.view.frame = finalFrame
-            }, completion: { _ in
-                // 5
-                fromVC.view.layer.shadowRadius = 0
-                fromVC.view.layer.shadowOpacity = 0
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            })
+            fromVC.view.frame = finalFrameFrom
+            toVC.view.frame = finalFrameTo
+        }, completion: { _ in
+            fromVC.view.layer.shadowRadius = 0
+            fromVC.view.layer.shadowOpacity = 0
+            toVC.view.layer.shadowRadius = 0
+            toVC.view.layer.shadowOpacity = 0
+            
+            if transitionContext.transitionWasCancelled {
+                fromVC.view.frame = toVC.view.frame
+            }
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            
+        })
     }
 }

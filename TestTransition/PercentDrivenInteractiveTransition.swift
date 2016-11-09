@@ -29,7 +29,7 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
     var completionSpeed: CGFloat = 1.0
     
     private(set) var animationCurve: UIViewAnimationCurve = .linear
-    private(set) var completionCurve: UIViewAnimationCurve = .linear
+    private(set) var completionCurve: UIViewAnimationCurve = .easeInOut
 
     
     private weak var transitionContext: UIViewControllerContextTransitioning!
@@ -41,6 +41,14 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
         
         if let withAnimator = transitionContext as? PrivateTransitionContextWithAnimator {
             animator = withAnimator.animator
+        }
+        
+        
+        if let layer = self.transitionContext?.containerView.layer {
+
+            //pausedTime = layer.convertTime(CACurrentMediaTime(), from:nil)
+            layer.speed = 0.0
+            layer.timeOffset = 0.0
         }
         
         self.transitionContext?.containerView.layer.speed = 0
@@ -101,14 +109,17 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
         displayLink?.invalidate()
         let layer = transitionContext.containerView.layer
         layer.speed = 1
-    
+
         if !transitionContext.transitionWasCancelled {
             let pausedTime: CFTimeInterval = layer.timeOffset
-            layer.timeOffset = 0.0;
-            layer.beginTime = 0.0; // Need to reset to 0 to avoid flickering :S
+            layer.timeOffset = 0.0
+            layer.beginTime = 0.0 // Need to reset to 0 to avoid flickering :S
             
-            let timeSincePause: CFTimeInterval = layer.convertTime(CACurrentMediaTime(), from:nil) - pausedTime;
-            layer.beginTime = timeSincePause;
+            let timeSincePause: CFTimeInterval = layer.convertTime(CACurrentMediaTime(), from:nil) - pausedTime
+            layer.beginTime = timeSincePause
+        }
+        else {
+            layer.removeAllAnimations()
         }
     }
 }
