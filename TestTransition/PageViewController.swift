@@ -66,11 +66,20 @@ class PageViewController: UIViewController {
         let transitionContext = PrivateTransitionContext(fromViewController: fromViewController, toViewController: toViewController, container: view, direction: direction)
         
         transitionContext.completionBlock = { didComplete in
-            fromViewController?.view.removeFromSuperview()
-            fromViewController?.removeFromParentViewController()
-            toViewController?.didMove(toParentViewController: self)
             
-            self.currentViewController = toViewController
+            if didComplete {
+                fromViewController?.view.removeFromSuperview()
+                fromViewController?.removeFromParentViewController()
+                toViewController?.didMove(toParentViewController: self)
+            
+                self.currentViewController = toViewController
+            }
+            else {
+                //toViewController?.didMove(toParentViewController: nil)
+                //toViewController?.view.removeFromSuperview()
+                toViewController?.removeFromParentViewController()
+                fromViewController?.didMove(toParentViewController: self)
+            }
         }
 
         let animator = animatorFor(direction: direction)
@@ -89,20 +98,16 @@ class PageViewController: UIViewController {
         }
     }
     
-    
     private func animatorFor(direction: Direction) -> UIViewControllerAnimatedTransitioning {
-        switch direction {
-        case .after:
-            return Animator(animation: .presenting)
-        case .before:
-            return Animator(animation: .dismiss)
-        default:
-            return Animator(animation: .presenting)
-        }
+        return Animator(animation: direction)
     }
 }
 
-class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning {
+protocol PrivateTransitionContextWithAnimator {
+    var animator: UIViewControllerAnimatedTransitioning? { get }
+}
+
+class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning, PrivateTransitionContextWithAnimator {
 
     public var containerView: UIView
     
@@ -184,11 +189,11 @@ class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning 
     }
     
     func finishInteractiveTransition() {
-        
+        transitionWasCancelled = false
     }
     
     func cancelInteractiveTransition() {
-        
+        transitionWasCancelled = true
     }
 }
 
@@ -196,11 +201,11 @@ class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning 
 extension PageViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return Animator(animation: .presenting)
+        return Animator(animation: .before)
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return Animator(animation: .dismiss)
+        return Animator(animation: .after)
     }
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

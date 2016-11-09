@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PageSwipeInteractionController : UIPercentDrivenInteractiveTransition {
+class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
     
     enum Direction {
         case before
@@ -66,7 +66,7 @@ class PageSwipeInteractionController : UIPercentDrivenInteractiveTransition {
             
         case .changed:
 
-            shouldCompleteTransition = progress > 0.5
+            shouldCompleteTransition = progress > 0.4
             update(progress)
             
         case .cancelled:

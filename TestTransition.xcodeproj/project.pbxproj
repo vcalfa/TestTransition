@@ -18,6 +18,7 @@
 		AC0219651DD04F440066578C /* PageSwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0219641DD04F440066578C /* PageSwipeInteractionController.swift */; };
 		AC0219681DD050C90066578C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0219671DD050C90066578C /* PageViewController.swift */; };
 		AC2131DB1DD0869E0073CA8E /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */; };
+		AC93A13E1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC93A13D1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		AC0219641DD04F440066578C /* PageSwipeInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSwipeInteractionController.swift; sourceTree = "<group>"; };
 		AC0219671DD050C90066578C /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		AC93A13D1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,6 @@
 				20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */,
 				20953B9F1DCFAD3D0031F384 /* ViewController.swift */,
 				20953BB31DCFD9310031F384 /* SwipeInteractionController.swift */,
-				20953BB11DCFC9C70031F384 /* Animator.swift */,
 				20953BA11DCFAD3E0031F384 /* Main.storyboard */,
 				20953BAF1DCFAFB90031F384 /* SecondViewController.swift */,
 				20953BA41DCFAD3E0031F384 /* Assets.xcassets */,
@@ -86,6 +87,8 @@
 			children = (
 				AC0219671DD050C90066578C /* PageViewController.swift */,
 				AC0219641DD04F440066578C /* PageSwipeInteractionController.swift */,
+				AC93A13D1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift */,
+				20953BB11DCFC9C70031F384 /* Animator.swift */,
 			);
 			name = PageController;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				20953BA01DCFAD3D0031F384 /* ViewController.swift in Sources */,
 				20953B9E1DCFAD3D0031F384 /* AppDelegate.swift in Sources */,
 				AC2131DB1DD0869E0073CA8E /* MyPageViewController.swift in Sources */,
+				AC93A13E1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

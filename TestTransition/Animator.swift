@@ -11,14 +11,10 @@ import UIKit
 
 class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    enum AType {
-        case presenting
-        case dismiss
-    }
+    private let animation: Direction
     
-    private let animation: AType
     
-    init(animation: AType) {
+    init(animation: Direction) {
         self.animation = animation
     }
     
@@ -26,11 +22,15 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         return 0.45
     }
     
-    private func originFrame(rect: CGRect) -> CGRect {
+    private func originFrame(rect: CGRect, direction:Direction) -> CGRect {
+        
+        
         return rect.applying(CGAffineTransform.init(translationX: rect.width*(1.0/5.0), y: 0))
     }
     
-    private func finalFromFrame(rect: CGRect) -> CGRect {
+    private func finalFromFrame(rect: CGRect, direction:Direction) -> CGRect {
+        
+        
         return rect.applying(CGAffineTransform.init(translationX: -(rect.width + 4.0), y: 0))
     }
     
@@ -51,32 +51,33 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         let containerView = transitionContext.containerView
         
-
-        let finalFrame : CGRect
-        let fFromFrame : CGRect
+        var finalFrame : CGRect = .zero
+        var fFromFrame : CGRect = .zero
         
         switch animation {
-        case .presenting:
+        case .before:
         
-            let initialFrame = originFrame(rect: fromVC.view.frame)
+            let initialFrame = originFrame(rect: fromVC.view.frame, direction: animation)
             toVC.view.frame = initialFrame
             
             finalFrame = transitionContext.finalFrame(for: toVC)
-            fFromFrame = finalFromFrame(rect: fromVC.view.frame)
+            fFromFrame = finalFromFrame(rect: fromVC.view.frame, direction: animation)
             
             setShadow(viewController: fromVC)
             containerView.insertSubview(toVC.view, belowSubview: fromVC.view)
             
-        case .dismiss:
+        case .after:
             
-            let initialFrame = finalFromFrame(rect: fromVC.view.frame)
+            let initialFrame = finalFromFrame(rect: fromVC.view.frame, direction: animation)
             toVC.view.frame = initialFrame
             
             finalFrame = transitionContext.finalFrame(for: toVC)
-            fFromFrame = originFrame(rect: fromVC.view.frame)
+            fFromFrame = originFrame(rect: fromVC.view.frame, direction: animation)
             
             setShadow(viewController: toVC)
             containerView.insertSubview(toVC.view, aboveSubview: fromVC.view)
+            break
+        case .unknown:
             break
         }
         
