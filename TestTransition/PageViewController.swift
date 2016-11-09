@@ -74,7 +74,19 @@ class PageViewController: UIViewController {
         }
 
         let animator = animatorFor(direction: direction)
-        animator.animateTransition(using: transitionContext)
+
+        transitionContext.animator = animator
+        
+        
+        let interactionController = interactionControllerForPresentation(using:animator)
+        
+        transitionContext.isInteractive = (interactionController != nil)
+        
+        if transitionContext.isInteractive {
+            interactionController?.startInteractiveTransition(transitionContext)
+        } else {
+            animator.animateTransition(using: transitionContext)
+        }
     }
     
     
@@ -94,6 +106,8 @@ class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning 
 
     public var containerView: UIView
     
+
+    public var animator: UIViewControllerAnimatedTransitioning?
     
     // Most of the time this is YES. For custom transitions that use the new UIModalPresentationCustom
     // presentation type we will invoke the animateTransition: even though the transition should not be
@@ -103,7 +117,7 @@ class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning 
     
     private(set) var targetTransform: CGAffineTransform = CGAffineTransform.identity
     
-    private(set) var isInteractive: Bool = false // This indicates whether the transition is currently interactive.
+    var isInteractive: Bool = false // This indicates whether the transition is currently interactive.
     
     
     private(set) var transitionWasCancelled: Bool = false
