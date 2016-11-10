@@ -10,8 +10,12 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let iamgeName = arc4random() % 24
         
         let hue = Double(arc4random()).truncatingRemainder(dividingBy: 256.0)  / 256.0   //  0.0 to 1.0
         let saturation =  Double(arc4random()).truncatingRemainder(dividingBy: 128.0) + 0.5  //  0.5 to 1.0, away from white

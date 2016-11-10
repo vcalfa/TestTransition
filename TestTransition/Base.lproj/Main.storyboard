@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V1s-PL-Frv">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,6 +52,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kw-tv-zeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1062" y="123"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="BwY-rQ-Nbr">
+            <objects>
+                <viewController id="huY-Ue-31a" customClass="SecondViewController" customModule="TestTransition" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iSa-DO-3zp"/>
+                        <viewControllerLayoutGuide type="bottom" id="aeK-Zp-hQ1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sqJ-Dz-sVY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dn0-jJ-S5I"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dn0-jJ-S5I" firstAttribute="centerX" secondItem="sqJ-Dz-sVY" secondAttribute="centerX" id="ASo-Ji-tji"/>
+                            <constraint firstItem="Dn0-jJ-S5I" firstAttribute="width" secondItem="sqJ-Dz-sVY" secondAttribute="width" id="FG0-yh-4By"/>
+                            <constraint firstItem="Dn0-jJ-S5I" firstAttribute="height" secondItem="sqJ-Dz-sVY" secondAttribute="height" id="d9Q-Ea-fKA"/>
+                            <constraint firstItem="Dn0-jJ-S5I" firstAttribute="centerY" secondItem="sqJ-Dz-sVY" secondAttribute="centerY" id="qlQ-8B-q3E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Dn0-jJ-S5I" id="IPO-z6-R1e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kGA-yf-5X3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1791" y="123"/>
         </scene>
     </scenes>
 </document>
