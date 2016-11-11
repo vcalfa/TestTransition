@@ -28,7 +28,7 @@ class PageViewController: UIViewController {
         
         
         self.currentViewController?.willMove(toParentViewController: nil)
-        currentViewController.view.frame = view.bounds
+       // currentViewController.view.frame = view.bounds
         addChildViewController(currentViewController)
 
         self.currentViewController?.view.removeFromSuperview()
@@ -36,6 +36,11 @@ class PageViewController: UIViewController {
         currentViewController.didMove(toParentViewController: self)
         
         self.currentViewController = currentViewController
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //self.currentViewController?.view.frame = view.bounds
     }
     
     func beginTransition(direction: Direction) {
@@ -75,11 +80,15 @@ class PageViewController: UIViewController {
                 self.currentViewController = toViewController
             }
             else {
-                toViewController?.didMove(toParentViewController: nil)
                 toViewController?.view.removeFromSuperview()
-                toViewController?.removeFromParentViewController()
-                fromViewController?.didMove(toParentViewController: self)
+                //toViewController?.didMove(toParentViewController: nil)
+                //toViewController?.removeFromParentViewController()
+                //fromViewController?.didMove(toParentViewController: self)
             }
+
+//            if ([animator respondsToSelector:@selector (animationEnded:)]) {
+//                [animator animationEnded:didComplete];
+//            }
         }
 
         let animator = animatorFor(direction: direction)
@@ -166,11 +175,24 @@ class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning,
     }
     
     func completeTransition(_ didComplete:Bool) -> Void {
+        animator?.animationEnded!(didComplete)
         completionBlock?(didComplete)
     }
     
     
     func initialFrame(for vc: UIViewController) -> CGRect {
+        
+        guard let a = animator as? Animator else {
+            return containerView.bounds
+        }
+        
+        if vc === privateViewControllers[.from]!! {
+            return a.originFromFrame
+        }
+        else if vc === privateViewControllers[.to]!! {
+            return a.originToFrame
+        }
+        
         return containerView.bounds
     }
     

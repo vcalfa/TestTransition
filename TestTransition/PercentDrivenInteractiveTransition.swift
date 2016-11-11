@@ -32,7 +32,7 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
     private(set) var completionCurve: UIViewAnimationCurve = .easeInOut
 
     
-    private weak var transitionContext: UIViewControllerContextTransitioning!
+    private var transitionContext: UIViewControllerContextTransitioning!
     private(set) var isInteracting: Bool = false
     private var displayLink: CADisplayLink?
     
@@ -41,14 +41,6 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
         
         if let withAnimator = transitionContext as? PrivateTransitionContextWithAnimator {
             animator = withAnimator.animator
-        }
-        
-        
-        if let layer = self.transitionContext?.containerView.layer {
-
-            //pausedTime = layer.convertTime(CACurrentMediaTime(), from:nil)
-            layer.speed = 0.0
-            layer.timeOffset = 0.0
         }
         
         self.transitionContext?.containerView.layer.speed = 0
@@ -62,8 +54,11 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
     
     func cancel() {
         isInteracting = false
-        transitionContext.cancelInteractiveTransition()
-        completeTransition()
+
+        if let context = transitionContext {
+            context.cancelInteractiveTransition()
+            completeTransition()
+        }
     }
     
     func finish() {
@@ -107,9 +102,10 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
     private func transitionFinished() {
         
         displayLink?.invalidate()
+        
         let layer = transitionContext.containerView.layer
         layer.speed = 1
-
+        
         if !transitionContext.transitionWasCancelled {
             let pausedTime: CFTimeInterval = layer.timeOffset
             layer.timeOffset = 0.0
@@ -119,7 +115,14 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
             layer.beginTime = timeSincePause
         }
         else {
-            layer.removeAllAnimations()
+            UIView.animate(withDuration: 0, delay: 0, options: [.beginFromCurrentState], animations: {
+                if let fromVC = self.transitionContext.viewController(forKey: .from) {
+                    fromVC.view.frame = self.transitionContext.initialFrame(for: fromVC)
+                }
+                if let toVC = self.transitionContext.viewController(forKey: .to) {
+                    toVC.view.frame = self.transitionContext.initialFrame(for: toVC)
+                }
+            }, completion: nil)
         }
     }
 }

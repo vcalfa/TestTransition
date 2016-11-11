@@ -20,6 +20,7 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
     var direction: Direction = .unknown
     
     var swipeLength: CGFloat = 175.0
+    var swipeBoost: CGFloat = 1.0
     
     private var shouldCompleteTransition = false
     private weak var pageViewController: PageViewController!
@@ -38,7 +39,7 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
         
         let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview!)
         let velocity = gestureRecognizer.velocity(in: gestureRecognizer.view!.superview!)
-        var progress = translation.x / gestureRecognizer.view!.superview!.frame.width
+        var progress = translation.x / (CGFloat(gestureRecognizer.view!.superview!.frame.width) * swipeBoost )
         progress = progress < 0 ? -1*progress : progress
         
         progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
@@ -67,8 +68,8 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
             //pageViewController.present(viewController, animated: true, completion: nil)
             
         case .changed:
-            print("Velocity: \(velocity)")
-            shouldCompleteTransition = progress > 0.4 || abs(velocity.x) > 800
+            //print("Velocity: \(velocity)")
+            shouldCompleteTransition = progress > 0.45 || abs(velocity.x) > 600
             update(progress)
             
         case .cancelled:
@@ -126,9 +127,9 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
     func directionFor(translation:CGPoint) -> Direction {
 
         switch translation {
-            case let t where t.x >= 0:
+            case let t where t.x > 0:
                 return .before
-            case let t where t.x < 0:
+            case let t where t.x <= 0:
                 return .after
             default:
                 return .unknown

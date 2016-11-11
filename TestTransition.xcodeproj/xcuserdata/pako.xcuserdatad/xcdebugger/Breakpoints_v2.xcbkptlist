@@ -42,6 +42,15 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
+                  symbolName = "-[NSObject doesNotRecognizeSelector:]"
+                  moduleName = "libobjc.A.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
                   symbolName = "-[NSObject(NSObject) doesNotRecognizeSelector:]"
                   moduleName = "CoreFoundation"
                   usesParentBreakpointCondition = "Yes"
@@ -53,16 +62,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestTransition/PageViewController.swift"
-            timestampString = "500335136.091583"
+            filePath = "TestTransition/PercentDrivenInteractiveTransition.swift"
+            timestampString = "500505140.402756"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "pauseInteractiveTransition()"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "completeTransition()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,12 +82,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestTransition/PageViewController.swift"
-            timestampString = "500335136.091583"
+            timestampString = "500519486.107468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "updateInteractiveTransition(_:)"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "initialFrame(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,12 +98,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestTransition/PageViewController.swift"
-            timestampString = "500335136.091583"
+            timestampString = "500519486.107468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "finishInteractiveTransition()"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "initialFrame(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
