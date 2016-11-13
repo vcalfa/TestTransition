@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200B8BB11DD90B5D00CD179A /* BasicInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B8BAD1DD90B5D00CD179A /* BasicInterpolation.swift */; };
+		200B8BB21DD90B5D00CD179A /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B8BAE1DD90B5D00CD179A /* Interpolatable.swift */; };
+		200B8BB31DD90B5D00CD179A /* Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B8BAF1DD90B5D00CD179A /* Interpolate.swift */; };
+		200B8BB41DD90B5D00CD179A /* SpringInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B8BB01DD90B5D00CD179A /* SpringInterpolation.swift */; };
 		20953B9E1DCFAD3D0031F384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */; };
 		20953BA01DCFAD3D0031F384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20953B9F1DCFAD3D0031F384 /* ViewController.swift */; };
 		20953BA31DCFAD3E0031F384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20953BA11DCFAD3E0031F384 /* Main.storyboard */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200B8BAD1DD90B5D00CD179A /* BasicInterpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInterpolation.swift; sourceTree = "<group>"; };
+		200B8BAE1DD90B5D00CD179A /* Interpolatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interpolatable.swift; sourceTree = "<group>"; };
+		200B8BAF1DD90B5D00CD179A /* Interpolate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interpolate.swift; sourceTree = "<group>"; };
+		200B8BB01DD90B5D00CD179A /* SpringInterpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringInterpolation.swift; sourceTree = "<group>"; };
 		20953B9A1DCFAD3D0031F384 /* TestTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20953B9F1DCFAD3D0031F384 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		200B8BB51DD90B6200CD179A /* Interpolate */ = {
+			isa = PBXGroup;
+			children = (
+				200B8BAD1DD90B5D00CD179A /* BasicInterpolation.swift */,
+				200B8BAE1DD90B5D00CD179A /* Interpolatable.swift */,
+				200B8BAF1DD90B5D00CD179A /* Interpolate.swift */,
+				200B8BB01DD90B5D00CD179A /* SpringInterpolation.swift */,
+			);
+			name = Interpolate;
+			sourceTree = "<group>";
+		};
 		20953B911DCFAD3D0031F384 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +87,7 @@
 		20953B9C1DCFAD3D0031F384 /* TestTransition */ = {
 			isa = PBXGroup;
 			children = (
+				200B8BB51DD90B6200CD179A /* Interpolate */,
 				AC0219661DD050B50066578C /* PageController */,
 				20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */,
 				20953B9F1DCFAD3D0031F384 /* ViewController.swift */,
@@ -167,12 +187,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				20953BB21DCFC9C70031F384 /* Animator.swift in Sources */,
+				200B8BB11DD90B5D00CD179A /* BasicInterpolation.swift in Sources */,
+				200B8BB41DD90B5D00CD179A /* SpringInterpolation.swift in Sources */,
 				AC0219681DD050C90066578C /* PageViewController.swift in Sources */,
+				200B8BB31DD90B5D00CD179A /* Interpolate.swift in Sources */,
 				20953BB41DCFD9310031F384 /* SwipeInteractionController.swift in Sources */,
 				AC0219651DD04F440066578C /* PageSwipeInteractionController.swift in Sources */,
 				20953BB01DCFAFB90031F384 /* SecondViewController.swift in Sources */,
 				20953BA01DCFAD3D0031F384 /* ViewController.swift in Sources */,
 				20953B9E1DCFAD3D0031F384 /* AppDelegate.swift in Sources */,
+				200B8BB21DD90B5D00CD179A /* Interpolatable.swift in Sources */,
 				AC2131DB1DD0869E0073CA8E /* MyPageViewController.swift in Sources */,
 				AC93A13E1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift in Sources */,
 			);
