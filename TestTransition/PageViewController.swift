@@ -38,11 +38,6 @@ class PageViewController: UIViewController {
         self.currentViewController = currentViewController
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //self.currentViewController?.view.frame = view.bounds
-    }
-    
     func beginTransition(direction: Direction) {
         
         var toVC:UIViewController? = nil
