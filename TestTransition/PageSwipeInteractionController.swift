@@ -68,6 +68,15 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
             //pageViewController.present(viewController, animated: true, completion: nil)
             
         case .changed:
+            let d = directionFor(translation: translation)
+            
+            if d != direction {
+                cancelTransition()
+                direction = d
+                interactionInProgress = true
+                pageViewController.beginTransition(direction: direction)
+            }
+            
             //print("Velocity: \(velocity)")
             shouldCompleteTransition = progress > 0.45 || abs(velocity.x) > 600
             update(progress)
@@ -96,7 +105,7 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
     
     func cancelTransition() {
         interactionInProgress = false
-        direction = .unknown
+        //direction = .unknown
         cancel()
     }
     
