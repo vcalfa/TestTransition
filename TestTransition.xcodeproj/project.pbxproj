@@ -12,16 +12,15 @@
 		200B8BB31DD90B5D00CD179A /* Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B8BAF1DD90B5D00CD179A /* Interpolate.swift */; };
 		200B8BB41DD90B5D00CD179A /* SpringInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B8BB01DD90B5D00CD179A /* SpringInterpolation.swift */; };
 		20953B9E1DCFAD3D0031F384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */; };
-		20953BA01DCFAD3D0031F384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20953B9F1DCFAD3D0031F384 /* ViewController.swift */; };
 		20953BA31DCFAD3E0031F384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20953BA11DCFAD3E0031F384 /* Main.storyboard */; };
 		20953BA51DCFAD3E0031F384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20953BA41DCFAD3E0031F384 /* Assets.xcassets */; };
 		20953BA81DCFAD3E0031F384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20953BA61DCFAD3E0031F384 /* LaunchScreen.storyboard */; };
 		20953BB01DCFAFB90031F384 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20953BAF1DCFAFB90031F384 /* SecondViewController.swift */; };
 		20953BB21DCFC9C70031F384 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20953BB11DCFC9C70031F384 /* Animator.swift */; };
-		20953BB41DCFD9310031F384 /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20953BB31DCFD9310031F384 /* SwipeInteractionController.swift */; };
 		AC0219651DD04F440066578C /* PageSwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0219641DD04F440066578C /* PageSwipeInteractionController.swift */; };
 		AC0219681DD050C90066578C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0219671DD050C90066578C /* PageViewController.swift */; };
 		AC2131DB1DD0869E0073CA8E /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */; };
+		AC81B65C1DF80F1000D2A455 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC81B65B1DF80F1000D2A455 /* CoreGraphics.framework */; };
 		AC93A13E1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC93A13D1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,17 +31,16 @@
 		200B8BB01DD90B5D00CD179A /* SpringInterpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringInterpolation.swift; sourceTree = "<group>"; };
 		20953B9A1DCFAD3D0031F384 /* TestTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20953B9F1DCFAD3D0031F384 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20953BA21DCFAD3E0031F384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20953BA41DCFAD3E0031F384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20953BA71DCFAD3E0031F384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20953BA91DCFAD3E0031F384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20953BAF1DCFAFB90031F384 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		20953BB11DCFC9C70031F384 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
-		20953BB31DCFD9310031F384 /* SwipeInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
 		AC0219641DD04F440066578C /* PageSwipeInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSwipeInteractionController.swift; sourceTree = "<group>"; };
 		AC0219671DD050C90066578C /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		AC81B65B1DF80F1000D2A455 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AC93A13D1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC81B65C1DF80F1000D2A455 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +72,7 @@
 			children = (
 				20953B9C1DCFAD3D0031F384 /* TestTransition */,
 				20953B9B1DCFAD3D0031F384 /* Products */,
+				AC81B65A1DF80F1000D2A455 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,16 +87,12 @@
 		20953B9C1DCFAD3D0031F384 /* TestTransition */ = {
 			isa = PBXGroup;
 			children = (
+				ACAC590A1DF81764006AD174 /* App */,
+				ACAC59081DF81724006AD174 /* Resources */,
+				ACAC59091DF81746006AD174 /* UI */,
 				200B8BB51DD90B6200CD179A /* Interpolate */,
 				AC0219661DD050B50066578C /* PageController */,
-				20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */,
-				20953B9F1DCFAD3D0031F384 /* ViewController.swift */,
-				20953BB31DCFD9310031F384 /* SwipeInteractionController.swift */,
-				20953BA11DCFAD3E0031F384 /* Main.storyboard */,
 				20953BAF1DCFAFB90031F384 /* SecondViewController.swift */,
-				20953BA41DCFAD3E0031F384 /* Assets.xcassets */,
-				20953BA61DCFAD3E0031F384 /* LaunchScreen.storyboard */,
-				20953BA91DCFAD3E0031F384 /* Info.plist */,
 				AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */,
 			);
 			path = TestTransition;
@@ -111,6 +107,40 @@
 				20953BB11DCFC9C70031F384 /* Animator.swift */,
 			);
 			name = PageController;
+			sourceTree = "<group>";
+		};
+		AC81B65A1DF80F1000D2A455 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC81B65B1DF80F1000D2A455 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ACAC59081DF81724006AD174 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20953BA41DCFAD3E0031F384 /* Assets.xcassets */,
+				20953BA91DCFAD3E0031F384 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		ACAC59091DF81746006AD174 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				20953BA61DCFAD3E0031F384 /* LaunchScreen.storyboard */,
+				20953BA11DCFAD3E0031F384 /* Main.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		ACAC590A1DF81764006AD174 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				20953B9D1DCFAD3D0031F384 /* AppDelegate.swift */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,10 +221,8 @@
 				200B8BB41DD90B5D00CD179A /* SpringInterpolation.swift in Sources */,
 				AC0219681DD050C90066578C /* PageViewController.swift in Sources */,
 				200B8BB31DD90B5D00CD179A /* Interpolate.swift in Sources */,
-				20953BB41DCFD9310031F384 /* SwipeInteractionController.swift in Sources */,
 				AC0219651DD04F440066578C /* PageSwipeInteractionController.swift in Sources */,
 				20953BB01DCFAFB90031F384 /* SecondViewController.swift in Sources */,
-				20953BA01DCFAD3D0031F384 /* ViewController.swift in Sources */,
 				20953B9E1DCFAD3D0031F384 /* AppDelegate.swift in Sources */,
 				200B8BB21DD90B5D00CD179A /* Interpolatable.swift in Sources */,
 				AC2131DB1DD0869E0073CA8E /* MyPageViewController.swift in Sources */,

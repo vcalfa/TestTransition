@@ -27,7 +27,7 @@ extension MyPageViewController: PageViewControllerDelegate {
         guard let sc = viewController as? SecondViewController , sc.index > 1 else {
             return false
         }
-
+        
         return true
     }
     

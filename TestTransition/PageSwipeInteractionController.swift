@@ -31,7 +31,7 @@ class PageSwipeInteractionController : PercentDrivenInteractiveTransition {
     }
     
     private func prepareGestureRecognizerInView(view: UIView) {
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(SwipeInteractionController.handleGesture(gestureRecognizer:)))
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(PageSwipeInteractionController.handleGesture(gestureRecognizer:)))
         view.addGestureRecognizer(gesture)
     }
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import QuartzCore
+import UIKit
 
 /**
  *  Interpolatable protocol. Requires implementation of a vectorize function.

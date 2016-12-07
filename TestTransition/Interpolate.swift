@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreGraphics
+import UIKit
 
 /// Interpolate class. Responsible for conducting interpolations.
 open class Interpolate {
