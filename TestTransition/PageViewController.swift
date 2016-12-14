@@ -170,7 +170,7 @@ class PrivateTransitionContext : NSObject, UIViewControllerContextTransitioning,
     }
     
     func completeTransition(_ didComplete:Bool) -> Void {
-        animator?.animationEnded!(didComplete)
+        //animator?.animationEnded!(didComplete)
         completionBlock?(didComplete)
     }
     

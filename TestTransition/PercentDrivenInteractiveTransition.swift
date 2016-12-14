@@ -17,10 +17,10 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
         }
     }
     
-    private(set) var percentComplete: CGFloat = 0.0 {
+    private(set) var percentComplete: Float = 0.0 {
         didSet {
-            setTimeOffset(TimeInterval(percentComplete*duration))
-            transitionContext.updateInteractiveTransition(percentComplete)
+            setTimeOffset(TimeInterval(CGFloat(percentComplete)*duration))
+            transitionContext.updateInteractiveTransition(CGFloat(percentComplete))
         }
     }
     
@@ -48,8 +48,8 @@ class PercentDrivenInteractiveTransition : NSObject , UIViewControllerInteractiv
         animator?.animateTransition(using: self.transitionContext)
     }
     
-    func update(_ percentComplete: CGFloat) {
-        self.percentComplete = CGFloat(fmaxf(fminf(Float(percentComplete), 1.0), 0.0))
+    func update(_ percentComplete: Float) {
+        self.percentComplete = percentComplete.border(min: 0.0, max: 1.0)
     }
     
     func cancel() {

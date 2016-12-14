@@ -20,6 +20,7 @@
 		AC0219651DD04F440066578C /* PageSwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0219641DD04F440066578C /* PageSwipeInteractionController.swift */; };
 		AC0219681DD050C90066578C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0219671DD050C90066578C /* PageViewController.swift */; };
 		AC2131DB1DD0869E0073CA8E /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */; };
+		AC49D3AA1DF95C8A0081CB66 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D3A91DF95C8A0081CB66 /* FloatExtension.swift */; };
 		AC81B65C1DF80F1000D2A455 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC81B65B1DF80F1000D2A455 /* CoreGraphics.framework */; };
 		AC93A13E1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC93A13D1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		AC0219641DD04F440066578C /* PageSwipeInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSwipeInteractionController.swift; sourceTree = "<group>"; };
 		AC0219671DD050C90066578C /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		AC49D3A91DF95C8A0081CB66 /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		AC81B65B1DF80F1000D2A455 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AC93A13D1DD30D1600B0C1F8 /* PercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 				AC0219661DD050B50066578C /* PageController */,
 				20953BAF1DCFAFB90031F384 /* SecondViewController.swift */,
 				AC2131DA1DD0869E0073CA8E /* MyPageViewController.swift */,
+				AC49D3A91DF95C8A0081CB66 /* FloatExtension.swift */,
 			);
 			path = TestTransition;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			files = (
 				20953BB21DCFC9C70031F384 /* Animator.swift in Sources */,
 				200B8BB11DD90B5D00CD179A /* BasicInterpolation.swift in Sources */,
+				AC49D3AA1DF95C8A0081CB66 /* FloatExtension.swift in Sources */,
 				200B8BB41DD90B5D00CD179A /* SpringInterpolation.swift in Sources */,
 				AC0219681DD050C90066578C /* PageViewController.swift in Sources */,
 				200B8BB31DD90B5D00CD179A /* Interpolate.swift in Sources */,

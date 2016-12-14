@@ -48,7 +48,8 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     private(set) var originFromFrame: CGRect = .zero
     
     
-    private func setShadow(viewController:UIViewController) {
+    private func setShadow(viewController:UIViewController)
+    {
         viewController.view.layer.shadowRadius = 4.0
         viewController.view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         viewController.view.layer.shadowOpacity = 0.5
@@ -57,7 +58,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     
     // This method can only  be a nop if the transition is interactive and not a percentDriven interactive transition.
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        
+
         self.transitionContext = transitionContext
         
         guard let fromVC = transitionContext.viewController(forKey: .from),
@@ -116,7 +117,8 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         })
     }
     
-    func animationEnded(_ transitionCompleted: Bool) {
+    func animationEnded(_ transitionCompleted: Bool)
+    {
     
 //        if !transitionCompleted {
 //        
